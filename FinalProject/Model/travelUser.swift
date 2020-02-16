@@ -43,6 +43,7 @@ struct User:Equatable {
     mutating func addRecord(r: Record) -> Void {
         historyRecords.append(r)
     }
+//    mutating func getRecordsAsString()
     init(username: String, password: String){
         self.username = username
         self.password = password
@@ -113,11 +114,14 @@ class travelModel: NSObject,travelDataModel{
                 return true
             }
         }
+        print ("inside check repeat")
+        save()
         return false
     }
-    
+
     // return true for verified
     func verify(username:String, password:String)->Bool{
+        print ("inside verify")
         for u in users{
             if u.getUsername() == username{
                 if u.getPassword() == password{
@@ -126,25 +130,29 @@ class travelModel: NSObject,travelDataModel{
                 }
             }
         }
+        save()
         return false
     }
     
     
     func findUser(username:String)->Void{
+        print ("inside finduser")
         for u in users{
             if u.getUsername() == username{
                 tempUser = u
             }
         }
+        save()
     }
 
      func save(){
         var userArray = [[String:String]]()
-        
+        print ("saving here")
         // loop thru array of Quotes and put into quotesArray
         for user in users {
             let u = ["username": user.getUsername(),
                      "password": user.getPassword()]
+            
             userArray.append(u)
             print (user.getUsername())
         }

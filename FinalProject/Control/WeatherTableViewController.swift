@@ -65,18 +65,12 @@ class WeatherTableViewController: UITableViewController  {
         super.touchesBegan(touches, with: event)
     }
     
-//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if let path = tableView.indexPathsForSelectedRows{
-//            if integer_t(indexPath) == integer_t(path) {
-//                return 140
-//            }
+//   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        if indexPath.row == selectedRowIndex.row {
+//            return 100
 //        }
-//        else {
-//            return 44
-//        }
-    
-
-}
+//        return 70
+//    }
 
 //    // when search bar pressed, search using API
 //   extension WeatherTableViewController : UISearchBarDelegate {
@@ -101,3 +95,4 @@ class WeatherTableViewController: UITableViewController  {
 //       }
 //   }
 
+}

@@ -80,6 +80,7 @@ class LoginViewController: UIViewController {
             
         // if it is a new user and have repeated name
           if newUser && userModel.checkRepeatUsername(username: username){
+            print ("1")
               let alert = UIAlertController(title: "Warning", message: "The username you have entered already exits! Try a new username.", preferredStyle: .alert)
               let warning = UIAlertAction(title: "OK", style: .cancel, handler: nil)
               passwordText.text = ""
@@ -90,6 +91,8 @@ class LoginViewController: UIViewController {
           }
         // a old user but not verifed
           else if !newUser && !userModel.verify(username: username, password: password){
+            print ("2")
+
             let alert = UIAlertController(title: "Warning", message: "The username and password you have entered do not match with the record! Try again.", preferredStyle: .alert)
             let warning = UIAlertAction(title: "OK", style: .cancel, handler: nil)
             passwordText.text = ""
@@ -100,9 +103,11 @@ class LoginViewController: UIViewController {
         }
         // a new user and a new name
           else if newUser && !userModel.checkRepeatUsername(username: username){
+            print ("3")
         }
             // a old user and verified
           else if !newUser && userModel.verify(username: username, password: password){
+            print ("4")
             // set tempUser to the user
             userModel.findUser(username: username)
         }
@@ -114,9 +119,7 @@ class LoginViewController: UIViewController {
         format.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let formattedDate = format.string(from: date)
         
-        // close the view controller
-        
-          dismiss(animated: true, completion: nil)
+        performSegue(withIdentifier: "loginSegue", sender: nil)
     }
     
 }

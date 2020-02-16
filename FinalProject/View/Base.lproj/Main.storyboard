@@ -21,22 +21,22 @@
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" textLabel="7Of-Pg-U6s" detailTextLabel="ili-K9-WdZ" style="IBUITableViewCellStyleValue1" id="xKz-zY-qa8">
-                                <rect key="frame" x="0.0" y="72" width="414" height="43.666667938232422"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TableCell" textLabel="7Of-Pg-U6s" detailTextLabel="ili-K9-WdZ" rowHeight="87" style="IBUITableViewCellStyleValue1" id="xKz-zY-qa8">
+                                <rect key="frame" x="0.0" y="72" width="414" height="87"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="xKz-zY-qa8" id="h7u-74-Dm3">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="87"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7Of-Pg-U6s">
-                                            <rect key="frame" x="20.000000000000004" y="11.999999999999998" width="33.333333333333336" height="20.333333333333332"/>
+                                            <rect key="frame" x="20.000000000000004" y="34" width="33.333333333333336" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ili-K9-WdZ">
-                                            <rect key="frame" x="335.33333333333331" y="11.999999999999998" width="58.666666666666664" height="20.333333333333332"/>
+                                            <rect key="frame" x="335.33333333333331" y="34" width="58.666666666666664" height="20.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -58,7 +58,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2Z-l0-rxW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1212" y="329"/>
+            <point key="canvasLocation" x="1211.5942028985507" y="328.53260869565219"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="jF6-aj-LCO">
@@ -72,10 +72,9 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="3iT-pp-F2V">
-                                        <barButtonItem key="rightBarButtonItem" title="Login" id="qMV-F2-LDy">
+                                        <barButtonItem key="rightBarButtonItem" title="MedKeep" id="qMV-F2-LDy">
                                             <connections>
-                                                <action selector="loginButtonPressed:" destination="B2Y-gY-USc" id="m9x-Op-4I2"/>
-                                                <segue destination="QNy-e0-JZ5" kind="show" id="JvP-yv-TGi"/>
+                                                <action selector="loginButtonPressed:" destination="B2Y-gY-USc" id="ToJ-IW-ZfS"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
@@ -127,6 +126,11 @@
                                 <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lPl-kR-fkR">
+                                <rect key="frame" x="124" y="479" width="187" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Log in/ Register"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -164,11 +168,12 @@
                         <outlet property="registerSwitch" destination="IQh-nc-6NU" id="S9x-vU-0wP"/>
                         <outlet property="usernameLabel" destination="QTu-8z-mR2" id="MXf-82-Q60"/>
                         <outlet property="usernameText" destination="qW2-K9-nfc" id="tIp-x3-KeF"/>
+                        <segue destination="QNy-e0-JZ5" kind="show" identifier="loginSegue" id="46E-w2-R68"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c8S-XV-CGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2233" y="576"/>
+            <point key="canvasLocation" x="-2233.3333333333335" y="575.54347826086962"/>
         </scene>
         <!--Weather-->
         <scene sceneID="PaC-9E-S6K">
@@ -242,7 +247,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Places" image="location.fill" catalog="system" id="eia-09-f15"/>
                     <connections>
-                        <outlet property="TimerLabel" destination="94W-L1-n1c" id="QtA-TG-Nkp"/>
+                        <outlet property="TimerLabel" destination="94W-L1-n1c" id="ZLN-SZ-tLC"/>
                         <outlet property="stopButton" destination="sUN-hq-lHx" id="qHh-fu-JjZ"/>
                     </connections>
                 </viewController>

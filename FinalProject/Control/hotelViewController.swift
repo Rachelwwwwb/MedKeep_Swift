@@ -11,9 +11,9 @@ import AVFoundation
 class RecordVC: UIViewController , AVAudioRecorderDelegate, AVAudioPlayerDelegate{
 
 class hotelViewController: UIViewController {
-    @IBOutlet weak var TimerLabel: UILabel!
     
     @IBOutlet weak var stopButton: UIButton!
+    @IBOutlet weak var TimerLabel: UILabel!
     
     let userModel = travelModel.sharedInstance
     var counter = 0.0
@@ -27,17 +27,12 @@ class hotelViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        var counter = 0.0
+        counter = 0.0
+        print("here")
         TimerLabel.text = String(counter)
         time = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
     }
-    override func viewDidDisappear(_ animated: Bool) {
-        TimerLabel.text = String(counter)
-        time = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
-    }
-    override func viewDidAppear(_ animated: Bool) {
-
-    }
+   
     
     // actually stop the timer
     @IBAction func startTimer(_ sender: Any) {
