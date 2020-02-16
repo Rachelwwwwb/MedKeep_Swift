@@ -8,18 +8,19 @@
 // for the record
 import UIKit
 import AVFoundation
-class RecordVC: UIViewController , AVAudioRecorderDelegate, AVAudioPlayerDelegate{
 
-class hotelViewController: UIViewController {
+class hotelViewController: UIViewController, AVAudioRecorderDelegate, AVAudioPlayerDelegate{
+    @IBOutlet weak var TimerLabel: UILabel!
     
     @IBOutlet weak var stopButton: UIButton!
-    @IBOutlet weak var TimerLabel: UILabel!
     
     let userModel = travelModel.sharedInstance
     var counter = 0.0
     var time = Timer()
     var isplaying = true
+    var isAudioRecordingGranted: Bool!
     var audioRecorder: AVAudioRecorder!
+    var isRecording = false
     
     @objc func UpdateTimer(){
         counter = counter + 0.1
@@ -27,32 +28,116 @@ class hotelViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        counter = 0.0
-        print("here")
+        var counter = 0.0
+        check_record_permission();
+        if let temp = isAudioRecordingGranted
+        {
+            TimerLabel.text = String(counter)
+            time = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
+            setup_recorder()
+            audioRecorder.record()
+            isRecording = true
+        }
+        else
+        {
+            finishAudioRecording(success: true)
+            isRecording = false
+        }
+    }
+    
+    func check_record_permission()
+    {
+        switch AVAudioSession.sharedInstance().recordPermission {
+        case AVAudioSessionRecordPermission.granted:
+            isAudioRecordingGranted = true
+            break
+        case AVAudioSessionRecordPermission.denied:
+            isAudioRecordingGranted = false
+            break
+        case AVAudioSessionRecordPermission.undetermined:
+            AVAudioSession.sharedInstance().requestRecordPermission({ (allowed) in
+                if allowed {
+                    self.isAudioRecordingGranted = true
+                } else {
+                    self.isAudioRecordingGranted = false
+                }
+            })
+            break
+        default:
+            break
+        }
+    }
+    func getDocumentsDirectory() -> URL
+    {
+        let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+        let documentsDirectory = paths[0]
+        return documentsDirectory
+    }
+    func getFileUrl() -> URL
+    {
+        let filename = "myRecording.m4a"
+        let filePath = getDocumentsDirectory().appendingPathComponent(filename)
+        return filePath
+    }
+    func setup_recorder()
+    {
+        if isAudioRecordingGranted
+        {
+            let session = AVAudioSession.sharedInstance()
+            do
+            {
+                try session.setCategory(AVAudioSession.Category.playAndRecord, options: .defaultToSpeaker)
+                try session.setActive(true)
+                let settings = [
+                    AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                    AVSampleRateKey: 44100,
+                    AVNumberOfChannelsKey: 2,
+                    AVEncoderAudioQualityKey:AVAudioQuality.high.rawValue
+                ]
+                audioRecorder = try AVAudioRecorder(url: getFileUrl(), settings: settings)
+                audioRecorder.delegate = self as? AVAudioRecorderDelegate
+                audioRecorder.isMeteringEnabled = true
+                audioRecorder.prepareToRecord()
+            }
+            catch let error {
+            }
+        }
+    }
+    
+    func finishAudioRecording(success: Bool)
+    {
+        if success
+        {
+            if let a = audioRecorder {
+                a.stop()
+            }
+            audioRecorder = nil
+            print("recorded successfully.")
+        }
+//        else
+//        {
+//            display_alert(msg_title: "Error", msg_desc: "Recording failed.", action_title: "OK")
+//        }
+    }
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool)
+    {
+        if !flag
+        {
+            finishAudioRecording(success: false)
+        }
+
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
         TimerLabel.text = String(counter)
         time = Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(UpdateTimer), userInfo: nil, repeats: true)
     }
-   
-    
+
     // actually stop the timer
     @IBAction func startTimer(_ sender: Any) {
         stopButton.isEnabled = false
         time.invalidate()
         isplaying = false
         stopButton.setTitle("Go back for latest record", for: .normal)
-    }
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}
+    }    
 }
