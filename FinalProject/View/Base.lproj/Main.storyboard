@@ -55,9 +55,6 @@
                     <navigationItem key="navigationItem" id="uVS-V2-sE3">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="mag-gR-7uG"/>
                     </navigationItem>
-                    <connections>
-                        <outlet property="searchBar" destination="vrS-l9-f8p" id="qcm-Ht-4fM"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c2Z-l0-rxW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -220,14 +217,38 @@
                     <view key="view" contentMode="scaleToFill" id="bqw-bN-Vzi">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="716"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="94W-L1-n1c">
+                                <rect key="frame" x="0.0" y="199" width="414" height="125"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUN-hq-lHx">
+                                <rect key="frame" x="0.0" y="343" width="414" height="157"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Stop Recording">
+                                    <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTimer:" destination="AMt-un-efJ" eventType="touchUpInside" id="rmP-z0-uqR"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="jNn-g9-2g6"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Places" image="location.fill" catalog="system" id="eia-09-f15"/>
+                    <connections>
+                        <outlet property="TimerLabel" destination="94W-L1-n1c" id="QtA-TG-Nkp"/>
+                        <outlet property="stopButton" destination="sUN-hq-lHx" id="qHh-fu-JjZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2V-0P-Ou1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="196" y="-1729.0640394088671"/>
+            <point key="canvasLocation" x="195.6521739130435" y="-1729.076086956522"/>
         </scene>
         <!--History View Controller-->
         <scene sceneID="NZZ-wG-AXh">
@@ -243,6 +264,16 @@
                                 <color key="textColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LAr-fe-5oF">
+                                <rect key="frame" x="20" y="103" width="374" height="349"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WOq-iT-r2S">
+                                <rect key="frame" x="159" y="510" width="93" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -254,6 +285,10 @@
                         <viewLayoutGuide key="safeArea" id="eMC-zu-ya7"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Hisotry" image="person.fill" catalog="system" id="jJa-nw-DUC"/>
+                    <connections>
+                        <outlet property="captureButton" destination="WOq-iT-r2S" id="Lsx-Qj-c2w"/>
+                        <outlet property="captureView" destination="LAr-fe-5oF" id="H5G-dF-QYC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="srA-Jc-QTP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -263,6 +298,6 @@
     <resources>
         <image name="location.fill" catalog="system" width="64" height="56"/>
         <image name="person.fill" catalog="system" width="64" height="60"/>
-        <image name="sun.max.fill" catalog="system" width="64" height="62"/>
+        <image name="sun.max.fill" catalog="system" width="32" height="32"/>
     </resources>
 </document>

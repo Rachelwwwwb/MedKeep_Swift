@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WeatherTableViewController: UITableViewController {
+class WeatherTableViewController: UITableViewController  {
     @IBOutlet weak var searchBar: UISearchBar!
     let userModel = travelModel.sharedInstance
 
@@ -26,7 +26,7 @@ class WeatherTableViewController: UITableViewController {
         super.viewDidLoad()
         listHistoryRecord = userModel.tempUser.historyRecords
         editButtonItem.isEnabled = false
-        searchBar.delegate = self
+        //searchBar.delegate = self as! UISearchBarDelegate
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +64,18 @@ class WeatherTableViewController: UITableViewController {
         }
         super.touchesBegan(touches, with: event)
     }
+    
+//    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        if let path = tableView.indexPathsForSelectedRows{
+//            if integer_t(indexPath) == integer_t(path) {
+//                return 140
+//            }
+//        }
+//        else {
+//            return 44
+//        }
+    
+
 }
 
 //    // when search bar pressed, search using API
