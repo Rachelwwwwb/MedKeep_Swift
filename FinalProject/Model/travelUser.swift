@@ -1,52 +1,50 @@
-//
-//  travelUser.swift
-//  FinalProject
-//
-//  Created by 王文贝 on 2019/12/8.
-//  Copyright © 2019 Wenbei Wang. All rights reserved.
-//
 
 import Foundation
 struct Record {
     public var date: String
     public var keywords: [String]
-    public var recordText : String
-    public var recordJson : String
-    init(date: String, keywords: [String], recordText: String, recordJson: String) {
+    public var userID: Int
+//    public var recordText : String
+//    public var recordJson : String
+    init(date: String, keywords: [String], userID: Int) {
         self.date = date
         self.keywords = keywords
-        self.recordText = recordText
-        self.recordJson = recordJson
+        self.userID = userID
         
     }
 }
 struct User:Equatable {
     
     static func == (lhs: User, rhs: User) -> Bool {
-        let areEqual = lhs.username == rhs.username &&
-            lhs.password == rhs.password
+        let areEqual = lhs.first_name == rhs.first_name &&
+            lhs.last_name == rhs.last_name && lhs.userID == rhs.userID
         return areEqual
     }
     
-    private var username : String
-    private var password : String
+    private var first_name : String
+    private var last_name : String
+    private var userID : Int
     public var currentDate : String?
     public var historyRecords : [Record]
     public var currentIndex:Int
     
-    func getUsername() -> String {
-        return username
+    func getFirstName() -> String {
+        return first_name
     }
-    func getPassword() -> String {
-        return password
+    func getLastName() -> String {
+        return last_name
+    }
+    func getUserId() -> Int {
+        return userID
     }
     mutating func addRecord(r: Record) -> Void {
         historyRecords.append(r)
     }
 //    mutating func getRecordsAsString()
-    init(username: String, password: String){
-        self.username = username
-        self.password = password
+    init(first_name: String, last_name: String, userID: Int){
+        self.first_name = first_name
+        self.last_name = last_name
+        self.userID = userID
         self.currentIndex = 0
         self.historyRecords = []
     }
@@ -55,7 +53,7 @@ struct User:Equatable {
             return historyRecords[currentIndex]
         }
         else {
-            return Record(date: "", keywords: [], recordText: "", recordJson: "")
+            return Record(date: "", keywords: [], userID: -1)
         }
     }
     
@@ -66,98 +64,67 @@ class travelModel: NSObject,travelDataModel{
     
     static let sharedInstance = travelModel()
     
-    private var users = [User]()
-    public var tempUser:User
-    public var loggin:Bool
-    var filepath:String
-    
+    public var users = [User]()
+    public var currentUser:User
+    public var AudioFilePath: URL
+
     override init() {
-        filepath = ""
-        loggin = false
-
-        tempUser = User(username: "temp", password: "temp")
-        let manager = FileManager.default
-        if let url = manager.urls(for: .documentDirectory, in: .userDomainMask).first {
-                   filepath = url.appendingPathComponent("users.plist").path
-                   print("filepath=\(filepath)")
-               }
-        // read from the plist file if it exists
-         if manager.fileExists(atPath: filepath) {
-            print ("find the path")
-             if let userArray = NSArray(contentsOfFile: filepath) {
-                 for dict in userArray {
-                     // converting from NSString to String
-                    let userDict = dict as! [String: String]
-                    if let usernameString = userDict["username"], let passwordString = userDict["password"] {
-                    print (usernameString)
-                    let u = User(username: usernameString, password: passwordString)
-                    users.append(u)
+        currentUser = User(first_name: "", last_name: "", userID: -1)
+        AudioFilePath = URL(string: "http://httpbin.org/post")!
+    }
+    
+    func getUsers() -> Void {
+        print ("getting users right now")
+        guard let resourceURL = URL(string:"http://35.202.219.171:5000/users") else {fatalError()}
+        let dataTask = URLSession.shared.dataTask(with: resourceURL){data,_,_ in
+            guard let jsonData = data else {
+                return
+            }
+            do {
+                print ("getting users right now")
+                let decoder = JSONDecoder()
+                
+                let List = try decoder.decode([singleUser].self,from:jsonData)
+                for i in List{
+                    let a:Int? = Int(i.id)
+                    if let b = a {
+                        let temp = User(first_name: i.first_name, last_name: i.last_name, userID: b)
+                        print (temp.getFirstName())
+                        self.users.insert(temp, at: 0)
                     }
-                 }
-             }
-         } else {
-             // fill with data
-            let user1 = User(username: "Emma", password: "emmapassword")
-            let user2 = User(username: "Jack", password: "jackpassword")
-            let user3 = User(username: "Kathrine", password: "katherinepassword")
-            let user4 = User(username: "Ashly", password: "ashlypassword")
-            let user5 = User(username: "Frank", password: "frankpassword")
-
-             users = [user1, user2, user3, user4,user5]
-         }
-    }
-    
-    // return true for finding repeated users
-    func checkRepeatUsername(username:String)->Bool{
-        for u in users{
-            if u.getUsername() == username{
-                return true
-            }
-        }
-        print ("inside check repeat")
-        save()
-        return false
-    }
-
-    // return true for verified
-    func verify(username:String, password:String)->Bool{
-        print ("inside verify")
-        for u in users{
-            if u.getUsername() == username{
-                if u.getPassword() == password{
-                    loggin = true
-                    return true
+                    
                 }
+            } catch {
             }
         }
-        save()
-        return false
+        dataTask.resume()
     }
-    
-    
-    func findUser(username:String)->Void{
-        print ("inside finduser")
-        for u in users{
-            if u.getUsername() == username{
-                tempUser = u
-            }
+    func save(rec: Record){
+        var keywordsss = String()
+        for a in rec.keywords{
+            keywordsss.append(a)
         }
-        save()
-    }
+        let json: [String: Any] = ["content": "64BitAudio",
+                                   "description": keywordsss,
+                                   "user_id": rec.userID]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: json)
 
-     func save(){
-        var userArray = [[String:String]]()
-        print ("saving here")
-        // loop thru array of Quotes and put into quotesArray
-        for user in users {
-            let u = ["username": user.getUsername(),
-                     "password": user.getPassword()]
-            
-            userArray.append(u)
-            print (user.getUsername())
+        let url = URL(string: "http://35.202.219.171:5000/recording")!
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.httpBody = jsonData
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "No data")
+                return
+            }
+            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
+            if let responseJSON = responseJSON as? [String: Any] {
+                print(responseJSON)
+            }
         }
-        // write to the file system
-        (userArray as NSArray).write(toFile: filepath, atomically: true)
+        task.resume()
 
     }
 }

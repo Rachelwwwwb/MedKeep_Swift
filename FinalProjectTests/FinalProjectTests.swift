@@ -1,13 +1,7 @@
-//
-//  FinalProjectTests.swift
-//  FinalProjectTests
-//
-//  Created by 王文贝 on 2019/12/8.
-//  Copyright © 2019 Wenbei Wang. All rights reserved.
-//
+
 
 import XCTest
-@testable import FinalProject
+@testable import MedKeep
 
 class FinalProjectTests: XCTestCase {
 

@@ -1,28 +1,20 @@
-//
-//  LoginViewController.swift
-//  FinalProject
-//
-//  Created by 王文贝 on 2019/12/9.
-//  Copyright © 2019 Wenbei Wang. All rights reserved.
-//
+
 
 import UIKit
 
 class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIBarButtonItem!
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var usernameText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
-    @IBOutlet weak var registerSwitch: UISwitch!
     @IBOutlet weak var loginLabel: UILabel!
     
-    @IBOutlet weak var newuserLabel: UILabel!
     @IBOutlet weak var passwordLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     let userModel = travelModel.sharedInstance
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        userModel.getUsers()
         let date = Date()
         let format = DateFormatter()
         format.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -30,20 +22,6 @@ class LoginViewController: UIViewController {
         loginButton.isEnabled = false
         usernameText.text = "\n"
         passwordText.text = "\n"
-        
-        if userModel.loggin{
-            print ("already log in")
-
-            newuserLabel.alpha = 0
-            passwordLabel.alpha = 0
-            usernameLabel.alpha = 0
-            usernameText.alpha = 0
-            passwordText.alpha = 0
-            registerSwitch.alpha = 0
-            loginLabel.text = "Saved"
-        }
-
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func usernameReturn(_ sender: UITextField) {
@@ -57,9 +35,8 @@ class LoginViewController: UIViewController {
                 enableLoginButton()
             }
         }
-       
     }
-    
+
     @IBAction func passwordReturn(_ sender: UITextField) {
         passwordText.resignFirstResponder()
         enableLoginButton()
@@ -76,50 +53,15 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonPressed(_ sender: UIBarButtonItem) {
           let password = passwordText.text ?? ""
           let username = usernameText.text ?? ""
-          let newUser = registerSwitch.isOn
             
-        // if it is a new user and have repeated name
-          if newUser && userModel.checkRepeatUsername(username: username){
-            print ("1")
-              let alert = UIAlertController(title: "Warning", message: "The username you have entered already exits! Try a new username.", preferredStyle: .alert)
-              let warning = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-              passwordText.text = ""
-              usernameText.text = ""
-              alert.addAction(warning)
-              present(alert, animated: true)
-              return
-          }
-        // a old user but not verifed
-          else if !newUser && !userModel.verify(username: username, password: password){
-            print ("2")
-
-            let alert = UIAlertController(title: "Warning", message: "The username and password you have entered do not match with the record! Try again.", preferredStyle: .alert)
-            let warning = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            passwordText.text = ""
-            usernameText.text = ""
-            alert.addAction(warning)
-            present(alert, animated: true)
-            return
+        for oneuser in userModel.users {
+            if oneuser.getFirstName() == password && oneuser.getLastName() == username {
+                userModel.currentUser = oneuser
+            }
         }
-        // a new user and a new name
-          else if newUser && !userModel.checkRepeatUsername(username: username){
-            print ("3")
-        }
-            // a old user and verified
-          else if !newUser && userModel.verify(username: username, password: password){
-            print ("4")
-            // set tempUser to the user
-            userModel.findUser(username: username)
-        }
- 
-        userModel.loggin =  true
-        print ("loggin is true")
-        let date = Date()
-        let format = DateFormatter()
-        format.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        let formattedDate = format.string(from: date)
-        
+                
         performSegue(withIdentifier: "loginSegue", sender: nil)
     }
     
 }
+

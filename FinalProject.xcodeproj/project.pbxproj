@@ -16,16 +16,19 @@
 		CC036B8D239DCDF30065E2E3 /* FinalProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036B8C239DCDF30065E2E3 /* FinalProjectTests.swift */; };
 		CC036B98239DCDF30065E2E3 /* FinalProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036B97239DCDF30065E2E3 /* FinalProjectUITests.swift */; };
 		CC036BAA239DD3420065E2E3 /* WeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036BA9239DD3420065E2E3 /* WeatherTableViewController.swift */; };
-		CC036BAE239DD46D0065E2E3 /* travelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036BAD239DD46D0065E2E3 /* travelModel.swift */; };
-		CC036BAF239DD46D0065E2E3 /* travelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036BAD239DD46D0065E2E3 /* travelModel.swift */; };
-		CC036BB0239DD46D0065E2E3 /* travelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036BAD239DD46D0065E2E3 /* travelModel.swift */; };
-		CC036BB2239DD4A00065E2E3 /* travelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036BB1239DD4A00065E2E3 /* travelUser.swift */; };
-		CC036BB3239DD4A00065E2E3 /* travelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036BB1239DD4A00065E2E3 /* travelUser.swift */; };
-		CC036BB4239DD4A00065E2E3 /* travelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC036BB1239DD4A00065E2E3 /* travelUser.swift */; };
 		CC51C58623A0DC9E008164AD /* hotelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51C58523A0DC9E008164AD /* hotelViewController.swift */; };
-		CC51C58C23A2341E008164AD /* places.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51C58B23A2341E008164AD /* places.swift */; };
-		CC51C58E23A23433008164AD /* placeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC51C58D23A23433008164AD /* placeRequest.swift */; };
+		CCCE07F523F9BA98000E0744 /* travelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE07F323F9BA98000E0744 /* travelModel.swift */; };
+		CCCE07F623F9BA98000E0744 /* travelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE07F323F9BA98000E0744 /* travelModel.swift */; };
+		CCCE07F723F9BA98000E0744 /* travelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE07F323F9BA98000E0744 /* travelModel.swift */; };
+		CCCE07F823F9BA98000E0744 /* travelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE07F423F9BA98000E0744 /* travelUser.swift */; };
+		CCCE07F923F9BA98000E0744 /* travelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE07F423F9BA98000E0744 /* travelUser.swift */; };
+		CCCE07FA23F9BA98000E0744 /* travelUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCCE07F423F9BA98000E0744 /* travelUser.swift */; };
 		CCD84252239F6FED004754FC /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD84251239F6FED004754FC /* LoginViewController.swift */; };
+		E129B3F423F9625D00AB1F7B /* AudioRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129B3EF23F9625D00AB1F7B /* AudioRequest.swift */; };
+		E129B3F523F9625D00AB1F7B /* AudioModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129B3F023F9625D00AB1F7B /* AudioModel.swift */; };
+		E129B3F623F9625D00AB1F7B /* usersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E129B3F123F9625D00AB1F7B /* usersModel.swift */; };
+		E18E5E8F23F97B6A0018B5B0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E18E5E8E23F97B6A0018B5B0 /* AVFoundation.framework */; };
+		E18E5E9123F991760018B5B0 /* AudioGet.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18E5E9023F991760018B5B0 /* AudioGet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		CC036B72239DCDED0065E2E3 /* Trip Life.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Trip Life.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC036B72239DCDED0065E2E3 /* MedKeep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedKeep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC036B75239DCDED0065E2E3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC036B77239DCDED0065E2E3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CC036B79239DCDED0065E2E3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -61,12 +64,15 @@
 		CC036B97239DCDF30065E2E3 /* FinalProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalProjectUITests.swift; sourceTree = "<group>"; };
 		CC036B99239DCDF30065E2E3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC036BA9239DD3420065E2E3 /* WeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherTableViewController.swift; sourceTree = "<group>"; };
-		CC036BAD239DD46D0065E2E3 /* travelModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travelModel.swift; sourceTree = "<group>"; };
-		CC036BB1239DD4A00065E2E3 /* travelUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = travelUser.swift; sourceTree = "<group>"; };
 		CC51C58523A0DC9E008164AD /* hotelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hotelViewController.swift; sourceTree = "<group>"; };
-		CC51C58B23A2341E008164AD /* places.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = places.swift; sourceTree = SOURCE_ROOT; };
-		CC51C58D23A23433008164AD /* placeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = placeRequest.swift; sourceTree = "<group>"; };
+		CCCE07F323F9BA98000E0744 /* travelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = travelModel.swift; sourceTree = "<group>"; };
+		CCCE07F423F9BA98000E0744 /* travelUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = travelUser.swift; sourceTree = "<group>"; };
 		CCD84251239F6FED004754FC /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = FinalProject/View/LoginViewController.swift; sourceTree = SOURCE_ROOT; };
+		E129B3EF23F9625D00AB1F7B /* AudioRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioRequest.swift; sourceTree = "<group>"; };
+		E129B3F023F9625D00AB1F7B /* AudioModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioModel.swift; sourceTree = "<group>"; };
+		E129B3F123F9625D00AB1F7B /* usersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = usersModel.swift; sourceTree = "<group>"; };
+		E18E5E8E23F97B6A0018B5B0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		E18E5E9023F991760018B5B0 /* AudioGet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioGet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E18E5E8F23F97B6A0018B5B0 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,13 +108,14 @@
 				CC036B8B239DCDF30065E2E3 /* FinalProjectTests */,
 				CC036B96239DCDF30065E2E3 /* FinalProjectUITests */,
 				CC036B73239DCDED0065E2E3 /* Products */,
+				E18E5E8D23F97B6A0018B5B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		CC036B73239DCDED0065E2E3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CC036B72239DCDED0065E2E3 /* Trip Life.app */,
+				CC036B72239DCDED0065E2E3 /* MedKeep.app */,
 				CC036B88239DCDF30065E2E3 /* FinalProjectTests.xctest */,
 				CC036B93239DCDF30065E2E3 /* FinalProjectUITests.xctest */,
 			);
@@ -158,10 +166,12 @@
 		CC036BA7239DCE4F0065E2E3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CC51C58B23A2341E008164AD /* places.swift */,
-				CC51C58D23A23433008164AD /* placeRequest.swift */,
-				CC036BAD239DD46D0065E2E3 /* travelModel.swift */,
-				CC036BB1239DD4A00065E2E3 /* travelUser.swift */,
+				E129B3F023F9625D00AB1F7B /* AudioModel.swift */,
+				E129B3EF23F9625D00AB1F7B /* AudioRequest.swift */,
+				E129B3F123F9625D00AB1F7B /* usersModel.swift */,
+				CCCE07F323F9BA98000E0744 /* travelModel.swift */,
+				CCCE07F423F9BA98000E0744 /* travelUser.swift */,
+				E18E5E9023F991760018B5B0 /* AudioGet.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +185,14 @@
 				CC036BA9239DD3420065E2E3 /* WeatherTableViewController.swift */,
 			);
 			path = Control;
+			sourceTree = "<group>";
+		};
+		E18E5E8D23F97B6A0018B5B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E18E5E8E23F97B6A0018B5B0 /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +212,7 @@
 			);
 			name = FinalProject;
 			productName = FinalProject;
-			productReference = CC036B72239DCDED0065E2E3 /* Trip Life.app */;
+			productReference = CC036B72239DCDED0065E2E3 /* MedKeep.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CC036B87239DCDF30065E2E3 /* FinalProjectTests */ = {
@@ -309,14 +327,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD84252239F6FED004754FC /* LoginViewController.swift in Sources */,
-				CC51C58C23A2341E008164AD /* places.swift in Sources */,
+				E129B3F423F9625D00AB1F7B /* AudioRequest.swift in Sources */,
+				CCCE07F523F9BA98000E0744 /* travelModel.swift in Sources */,
+				E129B3F523F9625D00AB1F7B /* AudioModel.swift in Sources */,
 				CC036BAA239DD3420065E2E3 /* WeatherTableViewController.swift in Sources */,
 				CC036B7A239DCDED0065E2E3 /* ViewController.swift in Sources */,
-				CC036BAE239DD46D0065E2E3 /* travelModel.swift in Sources */,
+				CCCE07F823F9BA98000E0744 /* travelUser.swift in Sources */,
+				E18E5E9123F991760018B5B0 /* AudioGet.swift in Sources */,
 				CC51C58623A0DC9E008164AD /* hotelViewController.swift in Sources */,
-				CC51C58E23A23433008164AD /* placeRequest.swift in Sources */,
+				E129B3F623F9625D00AB1F7B /* usersModel.swift in Sources */,
 				CC036B76239DCDED0065E2E3 /* AppDelegate.swift in Sources */,
-				CC036BB2239DD4A00065E2E3 /* travelUser.swift in Sources */,
 				CC036B78239DCDED0065E2E3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -326,8 +346,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC036B8D239DCDF30065E2E3 /* FinalProjectTests.swift in Sources */,
-				CC036BB3239DD4A00065E2E3 /* travelUser.swift in Sources */,
-				CC036BAF239DD46D0065E2E3 /* travelModel.swift in Sources */,
+				CCCE07F923F9BA98000E0744 /* travelUser.swift in Sources */,
+				CCCE07F623F9BA98000E0744 /* travelModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,8 +356,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC036B98239DCDF30065E2E3 /* FinalProjectUITests.swift in Sources */,
-				CC036BB4239DD4A00065E2E3 /* travelUser.swift in Sources */,
-				CC036BB0239DD46D0065E2E3 /* travelModel.swift in Sources */,
+				CCCE07FA23F9BA98000E0744 /* travelUser.swift in Sources */,
+				CCCE07F723F9BA98000E0744 /* travelModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,8 +521,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.wenbeiwa.FinalProject;
-				PRODUCT_NAME = "Trip Life";
+				PRODUCT_BUNDLE_IDENTIFIER = "-edu.usc.wenbeiwa.FinalProject";
+				PRODUCT_NAME = MedKeep;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -520,7 +540,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = edu.usc.wenbeiwa.FinalProject;
-				PRODUCT_NAME = "Trip Life";
+				PRODUCT_NAME = MedKeep;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
